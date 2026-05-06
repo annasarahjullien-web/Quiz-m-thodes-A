@@ -1,0 +1,46 @@
+# OS
+.DS_Store
+.DS_Store?
+*.swp
+*.swo
+*~
+.AppleDouble
+.LSOverride
+._*
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*.iml
+
+# Node (si on utilise npm à l'avenir)
+node_modules/
+package-lock.json
+yarn.lock
+dist/
+build/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environnement
+.env
+.env.local
+.env.*.local
+
+# Fichiers temporaires
+*.tmp
+*.bak
+.cache/
+
+# Spécifique au projet
+quiz-results.json
+.quiz-cache

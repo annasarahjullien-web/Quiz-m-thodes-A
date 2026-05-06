@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Secteur A SVTU - Agrégation Sciences de la Vie</title>
+    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/react.production.min.js"></script>
+    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.22.20/babel.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        #root {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .quiz-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 750px;
+            width: 100%;
+            padding: 2.5rem;
+        }
+
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 1.5rem;
+        }
+
+        .quiz-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .quiz-header p {
+            font-size: 1rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .progress-section {
+            margin-bottom: 2rem;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.4s ease;
+        }
+
+        .question-box {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 0.2%);
+            border-radius: 12px;
+            border-left: 5px solid #667eea;
+        }
+
+        .question-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .emoji {
+            font-size: 1.8rem;
+            margin-right: 12px;
+            display: inline-block;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .option-btn {
+            padding: 14px 16px;
+            text-align: left;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            background: white;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            color: #333;
+        }
+
+        .option-btn:not(:disabled):hover {
+            border-color: #667eea;
+            background: #f8f9ff;
+            transform: translateX(4px);
+        }
+
+        .option-btn:disabled {
+            cursor: default;
+        }
+
+        .option-btn.correct {
+            background: #c8e6c9;
+            border-color: #4caf50;
+            color: #2e7d32;
+        }
+
+        .explanation {
+            padding: 1.5rem;
+            background: #e3f2fd;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            margin-bottom: 2rem;
+            animation: slideIn 0.4s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .explanation p {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #1565c0;
+        }
+
+        .explanation strong {
+            color: #0d47a1;
+        }
+
+        .navigation {
+            display: flex;
+            gap: 12px;
+            justify-content: space-between;
+        }
+
+        .nav-btn {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+
+        .nav-btn:disabled {
+            background: #e0e0e0;
+            color: #999;
+            cursor: not-allowed;
+        }
+
+        .nav-btn:not(:disabled) {
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        .nav-btn:not(:disabled):hover {
+            background: #e8e8e8;
+        }
+
+        .next-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+        }
+
+        .next-btn:not(:disabled):hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .results {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .results-emoji {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            animation: bounce 1s ease;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .results h2 {
+            font-size: 2rem;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .score-display {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+
+        .results-message {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .restart-btn {
+            padding: 14px 32px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .restart-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .scheme-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f0f4f8;
+            border-radius: 12px;
+        }
+
+        .scheme-item {
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 2px solid transparent;
+        }
+
+        .scheme-btn {
+            width: 100%;
+            padding: 12px;
+            margin-top: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        @media (max-width: 600px) {
+            .quiz-container {
+                padding: 1.5rem;
+            }
+
+            .quiz-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .question-text {
+                font-size: 1.05rem;
+            }
+
+            .scheme-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState } = React;
+
+        function QuizSecteurA() {
+            const [currentQuestion, setCurrentQuestion] = useState(0);
+            const [score, setScore] = useState(0);
+            const [answered, setAnswered] = useState(false);
+            const [showResult, setShowResult] = useState(false);
+
+            const quizData = [
+                {
+                    id: 1,
+                    type: 'choice',
+                    question: 'Quel est le grossissement maximum d\'un microscope optique avant perte de résolution?',
+                    options: ['500x', '1000x', '2000x', '10000x'],
+                    correct: 1,
+                    explanation: 'La limite de résolution du microscope optique est environ 200 nm. Au-delà de ~1000x, on a de l\'agrandissement vide. Le grossissement utile est généralement 400-1000x.',
+                    emoji: '🔬'
+                },
+                {
+                    id: 2,
+                    type: 'choice',
+                    question: 'Quel fixateur est utilisé pour la microscopie électronique à transmission (MET)?',
+                    options: ['Formaldéhyde uniquement', 'Glutaraldéhyde + Tétraoxyde d\'osmium', 'Éthanol', 'Eau distillée'],
+                    correct: 1,
+                    explanation: 'La double fixation (glutaraldéhyde + OsO₄) est essentielle en MET. Le glutaraldéhyde stabilise les protéines, l\'osmium contraste les lipides et prépare aux coupes ultra-fines.',
+                    emoji: '⚗️'
+                },
+                {
+                    id: 3,
+                    type: 'choice',
+                    question: 'Quelle technique sépare les molécules d\'ADN selon leur taille?',
+                    options: ['Chromatographie d\'affinité', 'Électrophorèse sur gel d\'agarose', 'Centrifugation', 'Filtration'],
+                    correct: 1,
+                    explanation: 'L\'électrophorèse sur gel d\'agarose est LA technique classique de séparation d\'ADN. Les fragments migrent selon leur charge et leur taille dans le champ électrique.',
+                    emoji: '⚡'
+                },
+                {
+                    id: 4,
+                    type: 'choice',
+                    question: 'Quel est le rôle de l\'EDTA dans l\'extraction d\'ADN?',
+                    options: ['Catalyser la réaction', 'Chélater les ions Mg²⁺ et inactiver les DNases', 'Colorer l\'ADN', 'Augmenter le pH'],
+                    correct: 1,
+                    explanation: 'L\'EDTA chélate les divalents (Mg²⁺, Ca²⁺) dont dépendent les DNases. En les séquestrant, on protège l\'ADN de la dégradation.',
+                    emoji: '🛡️'
+                },
+                {
+                    id: 5,
+                    type: 'choice',
+                    question: 'Quel colorant révèle les protéines en électrophorèse?',
+                    options: ['Hématoxyline-Éosine', 'Bleu de Coomassie', 'Méthylène bleu', 'Safranine'],
+                    correct: 1,
+                    explanation: 'Le Bleu de Coomassie (ou nitrate d\'argent) sont les colorants standard pour les protéines sur gel. H&E est pour l\'histologie tissulaire.',
+                    emoji: '🎨'
+                },
+                {
+                    id: 6,
+                    type: 'choice',
+                    question: 'Quel est le nombre de cycles thermiques typique en PCR?',
+                    options: ['5-10 cycles', '20-25 cycles', '30-40 cycles', '50-100 cycles'],
+                    correct: 2,
+                    explanation: 'La PCR standard utilise 30-35 cycles. Chaque cycle: dénaturation (94°C), hybridation (amorces, ~55°C), élongation (72°C, ~1min/kb).',
+                    emoji: '🌡️'
+                },
+                {
+                    id: 7,
+                    type: 'choice',
+                    question: 'Quel microscopie donne les meilleures résolutions de l\'ultrastructure cellulaire?',
+                    options: ['Microscopie optique', 'Microscopie à fluorescence', 'Microscopie électronique à transmission (MET)', 'Loupe binoculaire'],
+                    correct: 2,
+                    explanation: 'La MET atteint une résolution de 0.1-1 nm (vs 200 nm pour l\'optique). Elle révèle organelles, filaments, complexes protéiques, membranes.',
+                    emoji: '🔬'
+                },
+                {
+                    id: 8,
+                    type: 'choice',
+                    question: 'Quel est le rôle de la déshydratation dans la préparation d\'échantillons?',
+                    options: ['Tuer les pathogènes', 'Remplacer l\'eau pour permettre l\'inclusion en paraffine/résines', 'Fixer les protéines', 'Augmenter le contraste'],
+                    correct: 1,
+                    explanation: 'La déshydratation progressive (70%, 90%, 100% éthanol) remplace l\'eau avant l\'inclusion. C\'est essentiel pour la paraffine (hydrophobe) et les résines.',
+                    emoji: '💧'
+                },
+                {
+                    id: 9,
+                    type: 'choice',
+                    question: 'Quelle enzyme de restriction coupe l\'ADN et produit des extrémités collantes?',
+                    options: ['Toutes les enzymes de restriction', 'Seules certaines (ex: EcoRI, BamHI)', 'Aucune ne produit d\'extrémités collantes', 'La Taq polymérase'],
+                    correct: 1,
+                    explanation: 'Certaines enzymes (EcoRI, BamHI, PstI...) font des coupures décalées produisant des "sticky ends". D\'autres font des coupures nettes (blunt ends).',
+                    emoji: '✂️'
+                },
+                {
+                    id: 10,
+                    type: 'choice',
+                    question: 'Quel type de chromatographie sépare les protéines selon leur poids moléculaire?',
+                    options: ['Chromatographie d\'échange d\'ions', 'Chromatographie d\'exclusion stérique (SEC)', 'Chromatographie d\'affinité', 'Chromatographie de partage'],
+                    correct: 1,
+                    explanation: 'La SEC (ou gel filtration) sépare par taille: grosses protéines éluent en premier, petites en dernier. Essentielle pour la purification de protéines complexes.',
+                    emoji: '⬜'
+                },
+                {
+                    id: 11,
+                    type: 'scheme',
+                    question: 'Identifiez les étapes de la microscopie optique pour préparer une coupe tissulaire',
+                    schemeSteps: [
+                        { step: 'Fixation', color: '#B3E5FC' },
+                        { step: 'Déshydratation', color: '#81D4FA' },
+                        { step: 'Inclusion en paraffine', color: '#4FC3F7' },
+                        { step: 'Microtomie', color: '#29B6F6' },
+                        { step: 'Coloration', color: '#03A9F4' },
+                        { step: 'Montage & Observation', color: '#039BE5' }
+                    ],
+                    explanation: 'Cet ordre est critique. La fixation stabilise les structures, la déshydratation prépare à la paraffine (hydrophobe), puis on coupe et colore pour l\'observation.',
+                    emoji: '📋'
+                },
+                {
+                    id: 12,
+                    type: 'choice',
+                    question: 'Quel tampon est typiquement utilisé en électrophorèse d\'ADN?',
+                    options: ['PBS (tampon phosphate)', 'TAE (Tris-acétate-EDTA)', 'Tampon de charge uniquement', 'NaCl pur'],
+                    correct: 1,
+                    explanation: 'TAE ou TBE assurent la conductivité et le pH pendant la migration. TAE (moins de sel) est préféré car il permet de recycler le tampon plus longtemps.',
+                    emoji: '⚡'
+                }
+            ];
+
+            const handleAnswer = (selectedIndex) => {
+                if (!answered) {
+                    const isCorrect = selectedIndex === quizData[currentQuestion].correct;
+                    if (isCorrect) {
+                        setScore(score + 1);
+                    }
+                    setAnswered(true);
+                    setShowResult(true);
+                }
+            };
+
+            const goToNext = () => {
+                if (currentQuestion < quizData.length - 1) {
+                    setCurrentQuestion(currentQuestion + 1);
+                    setAnswered(false);
+                    setShowResult(false);
+                }
+            };
+
+            const goToPrev = () => {
+                if (currentQuestion > 0) {
+                    setCurrentQuestion(currentQuestion - 1);
+                    setAnswered(false);
+                    setShowResult(false);
+                }
+            };
+
+            const restart = () => {
+                setCurrentQuestion(0);
+                setScore(0);
+                setAnswered(false);
+                setShowResult(false);
+            };
+
+            const question = quizData[currentQuestion];
+            const percentage = Math.round((score / quizData.length) * 100);
+            const isFinished = currentQuestion === quizData.length - 1 && answered;
+
+            return (
+                <div className="quiz-container">
+                    <div className="quiz-header">
+                        <h1>🧬 Quiz Secteur A SVTU</h1>
+                        <p>Maîtrisez les méthodes de laboratoire essentielles</p>
+                    </div>
+
+                    {!isFinished ? (
+                        <>
+                            <div className="progress-section">
+                                <div className="progress-info">
+                                    <span>Question {currentQuestion + 1}/{quizData.length}</span>
+                                    <span style={{ color: '#667eea' }}>Score: {score}/{quizData.length}</span>
+                                </div>
+                                <div className="progress-bar">
+                                    <div 
+                                        className="progress-fill"
+                                        style={{ width: `${((currentQuestion + 1) / quizData.length) * 100}%` }}
+                                    ></div>
+                                </div>
+                            </div>
+
+                            <div className="question-box">
+                                <p className="question-text">
+                                    <span className="emoji">{question.emoji}</span>
+                                    {question.question}
+                                </p>
+                            </div>
+
+                            {question.type === 'choice' ? (
+                                <div className="options">
+                                    {question.options.map((option, idx) => (
+                                        <button
+                                            key={idx}
+                                            onClick={() => handleAnswer(idx)}
+                                            disabled={answered}
+                                            className={`option-btn ${answered && idx === question.correct ? 'correct' : ''}`}
+                                        >
+                                            {option}
+                                        </button>
+                                    ))}
+                                </div>
+                            ) : (
+                                <div>
+                                    <div className="scheme-grid">
+                                        {question.schemeSteps.map((item, idx) => (
+                                            <div
+                                                key={idx}
+                                                className="scheme-item"
+                                                style={{ backgroundColor: item.color }}
+                                            >
+                                                {idx + 1}. {item.step}
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <button
+                                        onClick={() => handleAnswer(0)}
+                                        className="scheme-btn"
+                                    >
+                                        ✓ Juste!
+                                    </button>
+                                </div>
+                            )}
+
+                            {showResult && (
+                                <div className="explanation">
+                                    <p><strong>💡 Explication:</strong> {question.explanation}</p>
+                                </div>
+                            )}
+
+                            {answered && (
+                                <div className="navigation">
+                                    <button
+                                        onClick={goToPrev}
+                                        disabled={currentQuestion === 0}
+                                        className="nav-btn"
+                                    >
+                                        ← Précédent
+                                    </button>
+                                    <button
+                                        onClick={goToNext}
+                                        className="nav-btn next-btn"
+                                    >
+                                        Suivant →
+                                    </button>
+                                </div>
+                            )}
+                        </>
+                    ) : (
+                        <div className="results">
+                            <div className="results-emoji">
+                                {percentage >= 80 ? '🎉' : percentage >= 60 ? '👍' : '💪'}
+                            </div>
+                            <h2>Quiz Terminé!</h2>
+                            <div className="score-display">
+                                Score: {score}/{quizData.length} ({percentage}%)
+                            </div>
+                            <p className="results-message">
+                                {percentage >= 90 && 'Excellent! Vous maîtrisez parfaitement les méthodes du secteur A! 🏆'}
+                                {percentage >= 80 && percentage < 90 && 'Très bon! Quelques points à revoir mais c\'est solide!'}
+                                {percentage >= 60 && percentage < 80 && 'Correct, mais il faut revoir les détails techniques.'}
+                                {percentage < 60 && 'À retravailler! Révisez les protocoles et réessayez.'}
+                            </p>
+                            <button
+                                onClick={restart}
+                                className="restart-btn"
+                            >
+                                🔄 Recommencer
+                            </button>
+                        </div>
+                    )}
+                </div>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<QuizSecteurA />);
+    </script>
+</body>
+</html>

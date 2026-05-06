@@ -1,0 +1,229 @@
+📋 FEUILLE DE RÉSUMÉ RAPIDE - SECTEUR A SVTU
+
+═══════════════════════════════════════════════════════════════════
+
+🔬 MICROSCOPIE OPTIQUE
+├─ Résolution: ~200 nm (0.2 μm)
+├─ Grossissement utile: 400-1000x
+├─ Formule: Oculaire × Objectif
+├─ Types: Fond clair, fond noir, contraste de phase
+└─ Limites: Beyond 1000x = agrandissement vide
+
+═══════════════════════════════════════════════════════════════════
+
+⚗️ FIXATION (Stabiliser les structures)
+├─ Optique: Formaldéhyde 4%, Ethanol 70-100%
+├─ MET: Glutaraldéhyde 2.5% PUIS OsO₄
+├─ Règle: Première fixation = CRITIQUE
+├─ Durée: 2-4h à température ambiante
+└─ But: Arrêter la dégradation et préserver structures
+
+═══════════════════════════════════════════════════════════════════
+
+💧 DÉSHYDRATATION (Remplacer l'eau)
+├─ Protocole: 70% → 90% → 100% éthanol
+├─ Durée: 5-10 min par étape
+├─ Progressivité: ESSENTIELLE (évite rupture)
+├─ But: Préparer à la paraffine (hydrophobe)
+└─ Après: Puis inclusion en paraffine
+
+═══════════════════════════════════════════════════════════════════
+
+📦 INCLUSION EN PARAFFINE
+├─ Température: 37°C infiltration, 60°C imprégnation
+├─ Résultat: Bloc solide contenant tissu
+├─ Paisseur finale: 5-10 μm pour microscopie optique
+├─ Alternative: Résines (Spurr, Epon) pour MET
+└─ Usage: Préparer à la microtomie
+
+═══════════════════════════════════════════════════════════════════
+
+✂️ MICROTOMIE (Couper en sections)
+├─ Épaisseur optique: 5-10 μm
+├─ Épaisseur MET: 70-90 nm (ULTRA-fine!)
+├─ Outil: Microtome manuel ou rotatif
+├─ Lame chauffée: ~30-40°C (pour dérouler)
+└─ Résultat: Sections libres, sur lames
+
+═══════════════════════════════════════════════════════════════════
+
+🎨 COLORATIONS (Visualiser les structures)
+
+H&E (Hématoxyline & Éosine) - LE STANDARD
+├─ Noyau: BLEU-VIOLET
+├─ Cytoplasme: ROSE
+├─ Collagène: ROSE CLAIR
+└─ Utilisation: 90% des coupes d'histologie
+
+PAS (Polysaccharides)
+├─ Couleur: MAGENTA/ROSE
+└─ Détecte: Amidon, glycogène, sucres
+
+GRAM (Bactéries)
+├─ Gram+: VIOLET
+├─ Gram-: ROSE
+└─ Différencie: Paroi bactérienne
+
+═══════════════════════════════════════════════════════════════════
+
+⚡ ÉLECTROPHORÈSE SUR GEL D'AGAROSE (Séparer ADN par TAILLE)
+
+Protocole:
+1. Gel agarose 0.8% → couler
+2. Dépôt: ADN + tampon de charge
+3. Tension: 100V, 1h
+4. Révélation: UV (visualise sous UV)
+
+Points clés:
+├─ Sépare par TAILLE (pas masse)
+├─ Plus grand = moins de migration
+├─ Tampon: TAE (Tris-acétate-EDTA)
+├─ Marqueur: Fragment de poids moléculaire connu
+└─ Coloration: Éthidium bromide, SYBR Green, etc.
+
+═══════════════════════════════════════════════════════════════════
+
+🧪 EXTRACTION ADN (CTAB ou phénol-chloroforme)
+
+Protocole CTAB:
+1. Broyage du tissu
+2. Lyse: NaCl + CTAB + eau
+3. EDTA: Chélate Mg²⁺, désactive DNases
+4. Centrifugation: ADN précipite
+5. Lavage & élution
+
+Points critiques:
+├─ EDTA = ESSENTIEL (protège de dégradation)
+├─ CTAB = Enlève polysaccharides
+├─ pH basique = ADN reste en solution
+└─ Rendement: ~μg/mL d'ADN pur
+
+═══════════════════════════════════════════════════════════════════
+
+🔥 PCR (Amplifier l'ADN)
+
+Cycle thermique (x30-35):
+┌─ Dénaturation: 94°C, 15 sec (briser doubles brins)
+├─ Hybridation: 55°C, 30 sec (amorces s'attachent)
+└─ Élongation: 72°C, 1 min/kb (Taq synthétise)
+
+Composants:
+├─ Template ADN (moule)
+├─ Amorces (primers)
+├─ Taq polymérase (enzyme)
+├─ dNTPs (briques)
+└─ Tampon (pH, Mg²⁺)
+
+Point clé:
+└─ 30-35 cycles = 2^30-35 amplification (exponentiellement!)
+
+═══════════════════════════════════════════════════════════════════
+
+📊 CHROMATOGRAPHIE (Séparer protéines/molécules)
+
+1. EXCLUSION STÉRIQUE (SEC)
+   Sépare par: TAILLE/POIDS MOLÉCULAIRE
+   Usage: Purification protéines
+   Résultat: Grosses → sortent en premier
+
+2. ÉCHANGE D'IONS
+   Sépare par: CHARGE
+   Usage: Purification protéines chargées
+   Résultat: pH différents = élution différente
+
+3. AFFINITÉ
+   Sépare par: LIAISON SPÉCIFIQUE
+   Usage: Isoler protéine cible
+   Résultat: Protéine cible liée au ligand
+
+4. HPLC
+   Haute Pression Liquid Chromatography
+   Résolution: TRÈS élevée
+   Usage: Analyser complexe
+
+═══════════════════════════════════════════════════════════════════
+
+🔑 LES CONSTANTES À RETENIR
+
+Microscope optique:
+└─ Max 1000x (sinon agrandissement vide)
+
+Fixation MET:
+└─ Glutaraldéhyde PUIS OsO₄ (ordre CRITIQUE)
+
+EDTA:
+└─ Chélate Mg²⁺, désactive DNases
+
+PCR:
+└─ 30-35 cycles (pas 50, pas 10!)
+
+Électrophorèse:
+└─ Sépare par TAILLE
+
+SEC:
+└─ Grosses molécules sortent EN PREMIER
+
+═══════════════════════════════════════════════════════════════════
+
+🎯 ORDRE LOGIQUE COMMUN
+
+Tissu/cellule → Fixation → Déshydratation → Inclusion → 
+Microtomie → Coloration → Observation
+
+ADN/Protéine → Extraction → PCR/Digestion → Électrophorèse → 
+Visualisation → Interprétation
+
+═══════════════════════════════════════════════════════════════════
+
+⚠️ LES PIÈGES
+
+❌ Oublier la fixation = tout rate
+❌ Deshydratation brusque = rupture
+❌ OsO₄ AVANT glutaraldéhyde = mauvais
+❌ Électrophorèse sans tampon = pas de migration
+❌ PCR sans amorces = rien
+❌ EDTA absent = ADN dégradé
+❌ Grossissement >1000x = image floue
+
+═══════════════════════════════════════════════════════════════════
+
+✅ AVANT LE CC
+
+[  ] Microscopie optique: Détails techniques
+[  ] Fixation/Déshydratation/Inclusion: Ordre logique
+[  ] Colorations: H&E, Gram, PAS
+[  ] Extraction ADN: Rôle EDTA
+[  ] PCR: 30-35 cycles, composants
+[  ] Électrophorèse: Sépare par TAILLE
+[  ] Chromatographie: 4 types + utilisations
+
+═══════════════════════════════════════════════════════════════════
+
+📌 QUESTIONS PIÈGE DU PROF
+
+Q: "Pourquoi utiliser OsO₄?"
+R: Contraste les lipides + prépare aux ultra-coupes
+
+Q: "Pourquoi EDTA?"
+R: Chélate divalents, désactive DNases (protège ADN)
+
+Q: "Pourquoi 30-35 cycles exactement?"
+R: Équilibre sensibilité/spécificité (évite plateaux)
+
+Q: "Pourquoi progresser la déshydratation?"
+R: Évite déformation/rupture du tissu
+
+Q: "Qu'est-ce que sépare l'électrophorèse?"
+R: TAILLE de l'ADN (pas masse, pas charge)
+
+═══════════════════════════════════════════════════════════════════
+
+🏆 LES 3 POINTS À DÉFENDRE COÛTE QUE COÛTE
+
+1. MICROSCOPIE OPTIQUE: Résolution ~200nm, max 1000x
+2. EXTRACTION ADN: EDTA = chélate Mg²⁺ + désactive DNases
+3. ÉLECTROPHORÈSE: Sépare par TAILLE dans un champ électrique
+
+═══════════════════════════════════════════════════════════════════
+
+Bon courage! Vous connaissez maintenant les INCONTOURNABLES! 🎓

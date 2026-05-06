@@ -1,0 +1,41 @@
+{
+  "name": "quiz-secteur-a-svtu",
+  "version": "1.0.0",
+  "description": "Quiz interactif pour apprendre les méthodes de laboratoire du secteur A de l'agrégation SVTU",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "serve": "npx http-server",
+    "dev": "npx http-server"
+  },
+  "keywords": [
+    "agrégation",
+    "SVTU",
+    "secteur-A",
+    "quiz",
+    "biologie",
+    "laboratoire",
+    "méthodes",
+    "microscopie",
+    "PCR",
+    "électrophorèse"
+  ],
+  "author": "Étudiants SVTU",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/quiz-secteur-a"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/quiz-secteur-a/issues"
+  },
+  "homepage": "https://github.com/your-username/quiz-secteur-a#readme",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {
+    "http-server": "^14.0.0"
+  }
+}

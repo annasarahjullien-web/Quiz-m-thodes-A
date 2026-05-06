@@ -1,0 +1,121 @@
+🚀 DÉMARRAGE RAPIDE - Quiz Secteur A SVTU
+
+═══════════════════════════════════════════════════════════
+
+1️⃣  TESTER LE QUIZ LOCALEMENT (30 sec)
+────────────────────────────────────────
+✓ Ouvrez le fichier: index.html
+✓ Double-cliquez dessus
+✓ Le quiz s'ouvre dans votre navigateur!
+
+═══════════════════════════════════════════════════════════
+
+2️⃣  METTRE EN LIGNE SUR GITHUB (5 min)
+─────────────────────────────────────────
+Suivez le guide GITHUB_SETUP.md 
+(3 options disponibles selon votre niveau)
+
+═══════════════════════════════════════════════════════════
+
+3️⃣  APPRENDRE LES MÉTHODES (4 jours)
+──────────────────────────────────────
+1. Lisez LEARN_METHODS.md (comprendre les techniques)
+2. Passez le quiz 3-4 fois (apprendre par cœur)
+3. Focalisez-vous sur vos faibles points
+
+═══════════════════════════════════════════════════════════
+
+📁 FICHIERS DU PROJET
+
+├─ index.html              ← Ouvrir ça pour le quiz!
+├─ quiz-secteur-a.jsx      ← Code source React
+├─ README.md               ← Infos complètes du projet
+├─ LEARN_METHODS.md        ← Guide d'étude (10 méthodes)
+├─ GITHUB_SETUP.md         ← Comment publier sur GitHub
+├─ package.json            ← Configuration npm (optionnel)
+├─ .gitignore              ← Pour Git/GitHub
+└─ LICENSE                 ← Licence MIT
+
+═══════════════════════════════════════════════════════════
+
+📊 QUIZ: LES 12 QUESTIONS
+
+1.  Grossissement microscope optique
+2.  Fixateurs pour microscopie électronique
+3.  Électrophorèse d'ADN
+4.  Rôle de l'EDTA
+5.  Colorant pour protéines
+6.  Cycles PCR
+7.  Meilleure microscopie pour ultrastructure
+8.  Déshydratation
+9.  Enzymes de restriction
+10. Chromatographie SEC
+11. Schéma: Étapes microscopie optique
+12. Tampon électrophorèse
+
+═══════════════════════════════════════════════════════════
+
+🎯 VOS 4 JOURS
+
+Jour 1 │ Microscopie & Fixation
+Jour 2 │ Histologie & Colorations  
+Jour 3 │ Biologie moléculaire
+Jour 4 │ Révision + Quiz x3
+
+═══════════════════════════════════════════════════════════
+
+💡 CONSEILS D'APPRENTISSAGE
+
+✓ Passez le quiz 3-4 fois (questions mélangées)
+✓ Lisez CHAQUE explication - c'est les détails qui comptent
+✓ Dessinez les protocoles (fixation, PCR, etc.)
+✓ Demandez-vous "pourquoi?" pour chaque étape
+✓ Testez-vous sans aide la veille du CC
+
+═══════════════════════════════════════════════════════════
+
+🌐 PARTAGER LE QUIZ
+
+Une fois sur GitHub:
+- URL: https://votre-username.github.io/quiz-secteur-a
+- Partagez avec vos camarades!
+- Invitez-les à contribuer des questions
+
+═══════════════════════════════════════════════════════════
+
+❓ QUESTIONS FRÉQUENTES
+
+Q: Le quiz s'affiche mal?
+R: Ouvrez index.html avec un navigateur récent (Chrome, Firefox)
+
+Q: Comment modifier les questions?
+R: Éditez index.html, modifiez le tableau quizData
+
+Q: Ça marche hors ligne?
+R: Non, React se charge depuis CDN. Utilisez en ligne!
+
+Q: Le quiz sur GitHub n'a pas mes changements?
+R: Attendez 2-3 minutes après un push
+
+═══════════════════════════════════════════════════════════
+
+✅ CHECKLIST
+
+Avant le CC:
+[ ] Lis LEARN_METHODS.md
+[ ] Passes le quiz x4
+[ ] Scores au moins 85%
+[ ] Comprends chaque explication
+[ ] Peux expliquer les techniques à voix haute
+
+═══════════════════════════════════════════════════════════
+
+🏆 BON COURAGE!
+
+Vous avez exactement ce qu'il faut pour réussir! 
+Le secret: réviser intelligemment plutôt que longtemps.
+
+L'équipe du Quiz Secteur A SVTU
+Version 1.0 - Mai 2026
+
+═══════════════════════════════════════════════════════════
